@@ -1,0 +1,4 @@
+Install packages
+------------------
+1.npm init -y
+2.npm install --save express express-validator mongoose
