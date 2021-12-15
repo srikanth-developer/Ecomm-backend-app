@@ -66,5 +66,11 @@ exports.signin=(req,res)=>{
             })
         }
     })
-    const {firstName,lastName,email,password}=req.body
+    // const {firstName,lastName,email,password}=req.body
+}
+exports.requiresign=(req,res,next)=>{
+    const token=req.headers.authorization.split(" ")[1]
+    const user=jwt.verify(token,process.env.SECRET_KEY)
+    req.user=user
+    next()
 }
