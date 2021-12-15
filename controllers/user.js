@@ -1,5 +1,5 @@
 const User=require('../models/user')
-
+const jwt=require('jsonwebtoken');
 exports.signup=(req,res)=> { User.findOne({email:req.body.email}).exec((error,user)=>{
     if(user){
         return res.status(400).json({
@@ -29,4 +29,42 @@ _user.save((error,data)=>{
         })
     }
 })
+}
+
+exports.signin=(req,res)=>{
+    User.findOne({email:req.body.email}).exec((error,user)=>{
+        if(error){
+            return  res.status(400).json({
+                error
+            })
+        }
+        console.log('user',user);
+        if(user){
+            
+            if(user.authenicate(req.body.password)){
+                console.log(req.body.password);
+                // token is generated
+                const token=jwt.sign({_id:user._id},process.env.SECRET_KEY,{expiresIn:'1h'})
+                const {firstName,lastName,email,role,fullName}=req.body
+                res.status(200).json({
+                    token,
+                    user:{
+                        firstName,lastName,email,role,fullName
+                    }
+                })
+            }
+            else{
+               return res.status(400).json({
+                    
+                    user:"Invalid password"
+                })
+            }
+        }
+        else{
+            return res.status(400).json({
+                message:"Something went wrong"
+            })
+        }
+    })
+    const {firstName,lastName,email,password}=req.body
 }
