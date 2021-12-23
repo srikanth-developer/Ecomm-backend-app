@@ -2,3 +2,15 @@ Install packages
 ------------------
 1.npm init -y
 2.npm install --save express express-validator mongoose dotenv bcrypt jsonwebtoken
+
+ Admin
+ -----------
+ 1.signup
+    localhost:1010/api/admin/signup
+
+    {
+        "firstName":"srikanth",
+        "lastName":"reddy",
+        "email":"srikanth@gmail.com",
+        "password":12345
+    }

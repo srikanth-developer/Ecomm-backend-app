@@ -11,12 +11,12 @@ const port = process.env.PORT || 4000;
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-
+console.log('db connection fail');
 // db connection
-require('./config/db.js')
+require('../config/db.js')
 
 //all routes
-const userRoutes=require('./routes/user')
+const userRoutes=require('./routes/admin/auth')
 
 
 //routes
