@@ -11,16 +11,25 @@ const port = process.env.PORT || 4000;
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-console.log('db connection fail');
-// db connection
+
 require('../config/db.js')
 
+// cors to remove security applied to api
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
 //all routes
-const userRoutes=require('./routes/admin/auth')
+const authRoutes=require('./routes/auth')
+
+const adminRoutes=require('./routes/admin/auth') //start->route communicate with the controller
 
 
 //routes
-app.use('/api',userRoutes)
+app.use('/api',authRoutes)
+
+app.use('/api',adminRoutes)
+
 
 
 app.get("/", (req, res) => {
@@ -28,6 +37,7 @@ app.get("/", (req, res) => {
     message: "welcome to the landing page",
   });
 });
+
 app.post("/data", (req, res) => {
   res.status(200).json({
     message: req.body,

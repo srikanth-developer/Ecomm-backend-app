@@ -11,7 +11,8 @@ const {firstName,lastName,email,password}=req.body
 console.log(firstName);
 const _user=new User({
     firstName,lastName,email,password,
-    userName:Math.random().toString()
+    userName:Math.random().toString(),
+    role:'admin'
 })
 console.log('user',_user);
 _user.save((error,data)=>{
@@ -45,11 +46,11 @@ exports.signin=(req,res)=>{
                 console.log(req.body.password);
                 // token is generated
                 const token=jwt.sign({_id:user._id},process.env.SECRET_KEY,{expiresIn:'1h'})
-                const {firstName,lastName,email,role,fullName}=req.body
+                const {_id,firstName,lastName,email,role,fullName}=req.body
                 res.status(200).json({
                     token,
                     user:{
-                        firstName,lastName,email,role,fullName
+                        _id,firstName,lastName,email,role,fullName
                     }
                 })
             }
@@ -68,9 +69,9 @@ exports.signin=(req,res)=>{
     })
     // const {firstName,lastName,email,password}=req.body
 }
-exports.requiresign=(req,res,next)=>{
-    const token=req.headers.authorization.split(" ")[1]
-    const user=jwt.verify(token,process.env.SECRET_KEY)
-    req.user=user
-    next()
-}
+// exports.requiresign=(req,res,next)=>{
+//     const token=req.headers.authorization.split(" ")[1]
+//     const user=jwt.verify(token,process.env.SECRET_KEY)
+//     req.user=user
+//     next()
+// }

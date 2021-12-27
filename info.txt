@@ -1,8 +1,21 @@
 Install packages
 ------------------
 1.npm init -y
-2.npm install --save express express-validator mongoose dotenv bcrypt jsonwebtoken
-
+2.npm install --save express express-validator mongoose dotenv bcrypt jsonwebtoken cors
+ 
+Routes
+-------
+localhost:1010/  GET ----will give "welcome to the landing page"
+localhost:1010/data POST --
+will give {
+    "message": {
+        "name": "srikanth"
+    }
+}
+ body send like
+   {
+    "name":"srikanth"
+}
  Admin
  -----------
  1.signup
@@ -12,5 +25,5 @@ Install packages
         "firstName":"srikanth",
         "lastName":"reddy",
         "email":"srikanth@gmail.com",
-        "password":12345
+        "password":"12345"
     }
