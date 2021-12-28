@@ -38,9 +38,13 @@ will give {
 create products categories
 --------------------------------
 1.add categories
-   localhost:1010/api//category/create  -->post
+   localhost:1010/api/category/create  -->post
    {
        "name":"Electronics"
    }
 2.get categories
-  localhost:1010/api//category/getcategory  -->get
+  localhost:1010/api/category/getcategory  -->get
+product api
+-----------------------
+1.localhost:1010/api/product/create--------->post
+  

@@ -25,6 +25,7 @@ const authRoutes=require('./routes/auth')
 
 const adminRoutes=require('./routes/admin/auth') //start->route communicate with the controller
 const categoryRoutes=require('./routes/category')
+const productRoutes=require('./routes/product')
 
 
 //routes
@@ -32,6 +33,7 @@ app.use('/api',authRoutes)
 
 app.use('/api',adminRoutes)
 app.use('/api',categoryRoutes)
+app.use('/api',productRoutes)
 
 
 app.get("/", (req, res) => {
