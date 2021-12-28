@@ -50,8 +50,8 @@ exports.signin = (req, res) => {
       if (user.authenicate(req.body.password) && user.role === "admin") {
         console.log(req.body.password);
         // token is generated
-        const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY, {
-          expiresIn: "1h",
+        const token = jwt.sign({ _id: user._id ,role:user.role}, process.env.SECRET_KEY, {
+          expiresIn: "6h",
         });
         const { firstName, lastName, email, role, fullName } = user;
         res.status(200).json({
@@ -75,6 +75,6 @@ exports.signin = (req, res) => {
       });
     }
   });
-  // const {firstName,lastName,email,password}=req.body
+ 
 };
 

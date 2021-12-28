@@ -1,7 +1,7 @@
 Install packages
 ------------------
 1.npm init -y
-2.npm install --save express express-validator mongoose dotenv bcrypt jsonwebtoken cors
+2.npm install --save express express-validator mongoose dotenv bcrypt jsonwebtoken cors slugify multer shortid
  
 Routes
 -------
@@ -25,5 +25,22 @@ will give {
         "firstName":"srikanth",
         "lastName":"reddy",
         "email":"srikanth@gmail.com",
+        "password":"123456789"
+    }
+2.signin
+  
+    localhost:1010/api/admin/signin
+    {
+        
+        "email":"srikanth@gmail.com",
         "password":"12345"
     }
+create products categories
+--------------------------------
+1.add categories
+   localhost:1010/api//category/create  -->post
+   {
+       "name":"Electronics"
+   }
+2.get categories
+  localhost:1010/api//category/getcategory  -->get

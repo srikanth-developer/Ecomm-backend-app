@@ -47,15 +47,17 @@ const userSchema=new mongoose.Schema({
         }
         
     },{timestamps:true})
-
+    // .creates a hashed password
     userSchema.virtual('password')
     .set(function(password){
         this.hash_password=bcrypt.hashSync(password,10);
     })
+    // it will give fullname
     userSchema.virtual('fullName')
     .get(function(){
         return `${this.firstName} ${this.lastName}`
     })
+    // password is verified with the hash password in the database
     userSchema.methods={
         authenicate:function(password){
             return bcrypt.compareSync(password,this.hash_password)
