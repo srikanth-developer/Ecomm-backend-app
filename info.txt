@@ -35,16 +35,27 @@ will give {
         "email":"srikanth@gmail.com",
         "password":"12345"
     }
-create products categories
+create products categories  @27-12-2021 Monday
 --------------------------------
-1.add categories
+1.add categories 
    localhost:1010/api/category/create  -->post
    {
        "name":"Electronics"
    }
 2.get categories
   localhost:1010/api/category/getcategory  -->get
-product api
+==========================================
+product api    @28-12-2021 Tuesday
 -----------------------
 1.localhost:1010/api/product/create--------->post
+==========================
+Add Product to cart api     @29-12-2021 
+---------------------
+1.localhost:1010/api/category/create ---->post
+   send data in form
+   name realme
+   parentid 456
+   categoryImage fff.png
+
+
   

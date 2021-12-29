@@ -12,7 +12,7 @@ console.log(firstName);
 const _user=new User({
     firstName,lastName,email,password,
     userName:Math.random().toString(),
-    role:'admin'
+    role:'user'
 })
 console.log('user',_user);
 _user.save((error,data)=>{
@@ -42,7 +42,7 @@ exports.signin=(req,res)=>{
         console.log('user',user);
         if(user){
             console.log('all details of user',user);
-            if(user.authenicate(req.body.password) && user.role=='admin'){
+            if(user.authenicate(req.body.password) && user.role=='user'){
                 console.log(req.body.password);
                 // token is generated
                 const token=jwt.sign({_id:user._id,role:user.role},process.env.SECRET_KEY,{expiresIn:'1h'})
